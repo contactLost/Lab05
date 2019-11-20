@@ -1,10 +1,9 @@
-import javax.swing.*;
+import java.awt.*;
+
+import javax.swing.JFrame;
+
 import cs101.sosgame.SOS;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 /**
  *
@@ -12,15 +11,25 @@ import cs101.sosgame.SOS;
  */
 public class test extends JFrame{
     
+	static SOS sos;
+	static SOS sos2;
+	static SOSGUIPanel guiPanel;
     test(){
-        this.setSize(500, 500);
+        this.setSize(600, 600);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
-        this.add( new SOSCanvas() );
-        cs101.sosgame.SOS sos = new cs101.sosgame.SOS(500 );
+
+        guiPanel = new SOSGUIPanel();
+        guiPanel.add(  new SOSCanvas(sos) );
+        guiPanel.add(  new SOSCanvas(sos2) );
+        this.add(guiPanel);
     }
     
     public static void main(String[] args){
+        sos = new SOS( 5 );
+        sos2 = new SOS(3);
         new test();
+        sos.play('s',1,1);
+        sos.printBoard();
     }
 }
