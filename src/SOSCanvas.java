@@ -40,10 +40,10 @@ public class SOSCanvas extends JPanel{
 		for(int row = 1; row <= dim ; row++) {
 			for(int col = 1; col <= dim ; col++) {
 				//TODO fix here
-				int x = (row -1 * 2 ) * ( size / ( dim * 2 ) );
-				int y = (col -1 * 2 ) * ( size / ( dim * 2 ) );
+				int x = ((row -1) * 2 ) * ( size / ( dim * 2 ) );
+				int y = ((col -1) * 2 ) * ( size / ( dim * 2 ) );
 
-				g.drawString(  Character.toString( sos.getCellContents(row, col) ),  x , y);
+				g.drawString(  Character.toString( sos.getCellContents(row , col ) ),  x+80 , y+300);
 			}
 		}
 	}

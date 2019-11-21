@@ -49,9 +49,14 @@ public class SOSGUIPanel extends JPanel{
 	}
 
 	public void update() {
+		repaint();
 		sosCanvas1.repaint();
 		sosCanvas2.repaint();
 	}
+	
+//	public void gameOver() {
+//		JOptionPane.showMessageDialog(frame, "Player1 is the winner.");//TODO arrange names
+//	}
 
 	class MListener implements MouseListener
 	{
@@ -92,7 +97,9 @@ public class SOSGUIPanel extends JPanel{
 			(menu.getSOS()).play( menu.getSelectedButton(), row+1, col+1);
 			(menu.getSOS()).printBoard();
 			menu.update();
-			
+//			if( (menu.getSOS()).isGameOver()) {
+//				gameOver();
+//			}
 		}
 
 
