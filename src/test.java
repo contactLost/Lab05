@@ -14,14 +14,16 @@ public class test extends JFrame{
 	static SOS sos;
 	static SOS sos2;
 	static SOSGUIPanel guiPanel;
+	static SOSCanvas canvas1 ;
+	static SOSCanvas canvas2;
     test(){
-        this.setSize(600, 600);
+    	this.setTitle("XOX game");
+        this.setSize(1000, 600);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
 
         guiPanel = new SOSGUIPanel();
-        guiPanel.add(  new SOSCanvas(sos) );
-        guiPanel.add(  new SOSCanvas(sos2) );
+
         this.add(guiPanel);
     }
     
@@ -31,5 +33,8 @@ public class test extends JFrame{
         new test();
         sos.play('s',1,1);
         sos.printBoard();
+        guiPanel.update();
+        
+
     }
 }

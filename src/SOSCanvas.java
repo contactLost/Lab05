@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import cs101.sosgame.SOS;
+import java.awt.Graphics;
 
 /** TODO Observable 
  *
@@ -13,35 +14,39 @@ public class SOSCanvas extends JPanel{
 	String name1;
 	String name2;
 	int size;
-	
+
 	SOSCanvas(SOS sos){
 		super();
 		size = 500;
 		this.sos = sos;
-		name1 = JOptionPane.showInputDialog("Name of player 1: ");
-		name2 = JOptionPane.showInputDialog("Name of player 2: ");
+		this.repaint();
 	}
 
+	@Override
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponents(g);
-
+		int dim = sos.getDimension();
+		
+		//*************** Draw Grid ************************
 		g.setColor(Color.BLACK);
-
 		g.drawRect(0, 0, size, size);									//Borders
 
-		int i = sos.getDimension();
-
 		for(int j = 1 ; j <= sos.getDimension()-1 ; j++) {
-			g.drawLine(j* size / i, 0, j * size / i, size);
-			g.drawLine( 0 , j * size/i , size , j * size/i );
+			g.drawLine(j * size / dim, 0, j * size / dim, size);
+			g.drawLine( 0 , j * size/ dim , size , j * size/ dim );
 		}
 
-		
-		
-		g.drawString(name1, 0, 525);
-		g.drawString(name2, 475, 525);
+		for(int row = 1; row <= dim ; row++) {
+			for(int col = 1; col <= dim ; col++) {
+				//TODO fix here
+				int x = (row -1 * 2 ) * ( size / ( dim * 2 ) );
+				int y = (col -1 * 2 ) * ( size / ( dim * 2 ) );
+
+				g.drawString(  Character.toString( sos.getCellContents(row, col) ),  x , y);
+			}
+		}
 	}
-
-
+	
+	
 }
